@@ -1,8 +1,8 @@
-import streamlit as st
-import numpy as np
-import joblib
-from urllib.parse import urlparse
-import re
+import streamlit as st#Builds the interactive web app
+import numpy as np#Handles numerical arrays
+import joblib# Loads the pre-trained ML model
+from urllib.parse import urlparse #Loads the pre-trained ML model
+import re#pattern matching in text
 
 # Feature extraction function
 def extract_features(url):
@@ -50,7 +50,7 @@ if st.button("Check URL"):
     if url_input.strip() == "":
         st.warning("Please enter a valid URL.")
     else:
-        features = np.array(extract_features(url_input)).reshape(1, -1)
+        features = np.array(extract_features(url_input)).reshape(1, -1)#1d to 2d array
         prediction = model.predict(features)[0]
         if prediction.lower() == 'phishing':
             st.error(" The URL is **Phishing**.")
